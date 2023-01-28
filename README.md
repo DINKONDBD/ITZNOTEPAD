@@ -1,3 +1,4 @@
 # ITZNOTEPAD
 Lightweight, Customisable, Modifiable
-![ITZNOTEPAD_sZ1GzPIIiJ](https://user-images.githubusercontent.com/70340226/215282476-1593f437-101a-48ee-83aa-a1a301a26c44.png)
+
+![ITZNOTEPAD_deSsnwA824](https://user-images.githubusercontent.com/70340226/215282514-d8e3d020-636f-4dd7-9d82-7337b9e77521.png)
