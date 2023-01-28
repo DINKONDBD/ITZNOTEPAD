@@ -9,4 +9,5 @@ Windows Recomended reqs:
   Windows 10x
   Atleast 1gb of RAM
   .NET 6.0
+ 
 LINUX IS UNTESTED SO IT CAN HAVE BUGS
