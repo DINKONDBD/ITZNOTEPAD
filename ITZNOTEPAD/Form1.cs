@@ -4,6 +4,7 @@ namespace ITZNOTEPAD
     {
         private bool haveOpen = false;
         DialogResult result;
+        private bool changeSave = false;
         string name;
         public Form1()
         {
@@ -12,7 +13,8 @@ namespace ITZNOTEPAD
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            //empty
+            changeSave = false;
+            Form.ActiveForm.Text = "Open ITZNOTEPAD " + name + "*";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -30,7 +32,8 @@ namespace ITZNOTEPAD
                 richTextBox1.Text = File.ReadAllText(openFileDialog1.FileName);
                 name = openFileDialog1.FileName;
                 haveOpen = true;
-                Form.ActiveForm.Text = "ITZNOTEPAD " +openFileDialog1.FileName;
+                changeSave = true;
+                Form.ActiveForm.Text = "Open ITZNOTEPAD " + openFileDialog1.FileName;
             }
             
         }
@@ -56,6 +59,7 @@ namespace ITZNOTEPAD
                 name = saveFileDialog1.FileName;
                 File.WriteAllText(name, richTextBox1.Text);
                 haveOpen = true;
+                Form.ActiveForm.Text = "Open ITZNOTEPAD " + saveFileDialog1.FileName;
             }
         }
 
@@ -63,6 +67,8 @@ namespace ITZNOTEPAD
         {
             if (haveOpen) {
                 File.WriteAllText(name, richTextBox1.Text);
+                changeSave = true;
+                Form.ActiveForm.Text = "Open ITZNOTEPAD " + saveFileDialog1.FileName;
             }
             if (!haveOpen)
             {
@@ -72,6 +78,8 @@ namespace ITZNOTEPAD
                     name = saveFileDialog1.FileName;
                     File.WriteAllText(name, richTextBox1.Text);
                     haveOpen = true;
+                    changeSave = true;
+                    Form.ActiveForm.Text = "Open ITZNOTEPAD " + saveFileDialog1.FileName;
                 }
             }
         }
@@ -129,7 +137,7 @@ namespace ITZNOTEPAD
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(!haveOpen )
+            if(!haveOpen && !changeSave)
             {
                 var window = MessageBox.Show(
                     "Are you sure to close unsaved file??",
