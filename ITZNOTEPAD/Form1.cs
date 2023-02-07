@@ -126,5 +126,19 @@ namespace ITZNOTEPAD
                 editToolStripMenuItem.BackColor = res.Color;
             }
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(!haveOpen )
+            {
+                var window = MessageBox.Show(
+                    "Are you sure to close unsaved file??",
+                    "Close window?",
+                    MessageBoxButtons.YesNo);
+
+                e.Cancel = (window == DialogResult.No);
+            }
+
+        }
     }
 }
