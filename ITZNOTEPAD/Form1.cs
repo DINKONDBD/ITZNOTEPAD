@@ -30,11 +30,16 @@ namespace ITZNOTEPAD
                 richTextBox1.Text = File.ReadAllText(openFileDialog1.FileName);
                 name = openFileDialog1.FileName;
                 haveOpen = true;
+                Form.ActiveForm.Text = "ITZNOTEPAD " +openFileDialog1.FileName;
             }
             
         }
 
-        private void newToolStripMenuItem_Click(object sender, EventArgs e) => new Form1().Show();
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 f = new Form1();
+            f.Show();
+        }
 
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e) => new AboutPage().Show();
