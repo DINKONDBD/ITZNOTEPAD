@@ -140,11 +140,32 @@ namespace ITZNOTEPAD
             if(!haveOpen && !changeSave)
             {
                 var window = MessageBox.Show(
-                    "Are you sure to close unsaved file??",
+                    "Do you want to save file?",
                     "Close window?",
-                    MessageBoxButtons.YesNo);
+                    MessageBoxButtons.YesNoCancel);
 
-                e.Cancel = (window == DialogResult.No);
+                e.Cancel = (window == DialogResult.Cancel);
+                    if(window == DialogResult.Yes)
+                    {
+                        if (haveOpen)
+                        {
+                            File.WriteAllText(name, richTextBox1.Text);
+                            changeSave = true;
+                            Form.ActiveForm.Text = "Open ITZNOTEPAD " + saveFileDialog1.FileName;
+                        }
+                        if (!haveOpen)
+                        {
+                            result = saveFileDialog1.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+                                name = saveFileDialog1.FileName;
+                                File.WriteAllText(name, richTextBox1.Text);
+                                haveOpen = true;
+                                changeSave = true;
+                                Form.ActiveForm.Text = "Open ITZNOTEPAD " + saveFileDialog1.FileName;
+                            }
+                        }
+                }
             }
 
         }
